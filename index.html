@@ -3,26 +3,38 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0" />
     <meta charset="utf-8" />
-    
+    <script src="https://stg-analytics.bigdata.samsung.com/script/js/sa.min.js" trackingId="998-398-515756" appVersion="3.4.0" uiVersion="3.4.0" platformType="webApp"></script>
   </head>
   <body>
-    <p>로딩이 완료된 웹뷰 입니다!!!</p>
-    <input type="button" value="Say hello" onClick="getDeviceId()" />
+    <p>SA JS SDK 테스트용 웹뷰 입니다!!!</p>
+    <input type="button" value="View Cookie" onClick="getCookie()" />
+    <button onClick="sendPageLog()">Send Page Log</button>
+    <button onClick="sendEventLog()">Send Event Log</button>
     <script type="text/javascript">
-      function getDeviceId() {
+      function getCookie() {
         var ret = document.cookie;
-
-        document.write(ret);
+        
+        alert(ret);
+      }
+      function sendPageLog() {
+       window.sa('set', 'pageName', 'page name');
+       window.sa('send', 'pv', 'testbed');
+      }
+      function sendEventLog() {
+       window.sa('set', 'eventName', 'event name');
+       window.sa('set', 'pageName', 'page name');
+       window.sa('set', 'customDimension', 'grade', 'A');
+       window.sa('send', 'ev', 'testbed');
       }
     </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FWMG0PNBZL"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-FWMG0PNBZL"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'G-FWMG0PNBZL');
-    </script>
+    </script> -->
   </body>
 </html>
